@@ -1,13 +1,15 @@
-//increase quantity
-function increaseQuantity(index) {
+// function removeItem
+function removeItem(index) {
     for(var i = 0; i < cart.items.length; i++) {
       if(cart.items[i].Id === index) {
-        cart.items[i].Quantity++;
-        cart.items[i].Amount = cart.items[i].Quantity * cart.items[i].Price;
-        if(cart.items[i].Quantity >= 101) {
-          removeItem(index);
-        }// end of if
+        document.getElementById("productsTable").innerHTML = "";
+        cart.items.splice(i, 1);
       }// end of if
     }// end of for
+    if(cart.items.length == 0) {
+      document.getElementById("topCartDisplay").value = 0;
+      localStorage.clear();
+    }//end of if
     productTotal();
+    buildCart();
 }// end of function
