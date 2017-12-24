@@ -1,20 +1,28 @@
-// function ascendingOrder
-function ascendingOrder(a,b) {
-    for(var i = 0; i < products.length; i++) {
-       return (a.Price) - (b.Price);
+// function updateFilter
+function updateFilter() {
+    var category = [];
+    var inputCheckboxes = document.getElementsByClassName("filterCategory");
+    var products = document.getElementsByClassName("product-div");
+    for(var i = 0; i < inputCheckboxes.length; i++) {
+      if(inputCheckboxes[i].checked) {
+        var inputCheckboxValue = inputCheckboxes[i].getAttribute("value");
+        category.push(inputCheckboxValue);
+        //alert(category);
+      }// end of if
     }// end of for
-}// end of function
-
-// function descendingOrder
-function descendingOrder(a,b) {
-    for(var i = 0; i < products.length; i++) {
-        return (b.Price) - (a.Price);
+    for(var j = 0; j < products.length; j++) {
+      var productCategory = products[j].getAttribute("category");
+      products[j].style.display = "none";
+      for(var k = 0; k < category.length; k++) {
+        if(category[k] === productCategory) {
+          products[j].style.display = "block";
+          break;
+        }// end of if
+      }// end of for
     }// end of for
-}// end of function
-
-// function alphabeticalOrder
-function alphabeticalOrder(a,b) {
-    for(var i = 0; i < products.length; i++) {
-        return (a.Name) > (b.Name);
+    for(var l = 0; l < products.length; l++) {
+      if(category.length === 0) {
+          products[l].style.display = "block";
+      }// end of if
     }// end of for
-}// end of function
+}//end of function
