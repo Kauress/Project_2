@@ -1,15 +1,13 @@
-// function removeItem
-function removeItem(index) {
-    for(var i = 0; i < cart.items.length; i++) {
-      if(cart.items[i].Id === index) {
-        document.getElementById("productsTable").innerHTML = "";
-        cart.items.splice(i, 1);
-      }// end of if
-    }// end of for
-    if(cart.items.length == 0) {
-      document.getElementById("topCartDisplay").value = 0;
-      localStorage.clear();
-    }//end of if
+
+//function coupon
+function coupon() {
+    var couponInput = document.getElementById("couponCode");
+    if(couponInput.value === "30%Off") {
+        cart.couponValue = 0.30;
+    } else if(couponInput.value === "50%Off") {
+       cart.couponValue = 0.50;
+    } else {
+      cart.couponValue = 1;
+    }
     productTotal();
-    buildCart();
 }// end of function
